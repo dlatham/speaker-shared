@@ -1,0 +1,19 @@
+{
+  "name": "speaker-shared",
+  "version": "0.1.0",
+  "description": "Shared library between speaker-os, speaker-web and speaker-native",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dlatham/speaker-shared.git"
+  },
+  "author": "Dave Latham",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dlatham/speaker-shared/issues"
+  },
+  "homepage": "https://github.com/dlatham/speaker-shared#readme"
+}
