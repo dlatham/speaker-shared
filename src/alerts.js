@@ -1,8 +1,4 @@
 import React from'react';
-import { connect, useSelector } from 'react-redux';
-import { isNative } from './global.js';
-const componentPath = isNative() ? './alerts/alerts_provider.native.js' : './alerts/alerts_provider.js';
-import AlertComponent from componentPath;
 
 
 export const success = ({message, description=null}) => {
@@ -24,9 +20,6 @@ export const danger = ({message, description=null}) => {
 }
 
 
-
-
-
 const dispatch = (dispatch, ownProps = {}) => {
 	return {
 		danger: (message, description=null)=> dispatch(danger(message, description)),
@@ -40,8 +33,6 @@ const propsMap = (state, ownProps={})=> {
 	}
 };
 
-const AlertProvider = connect(propsMap)(AlertComponent);
-
-export {AlertProvider, dispatch};
+export {dispatch, propsMap};
 
 

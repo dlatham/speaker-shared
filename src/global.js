@@ -1,16 +1,11 @@
 // Global functions and data to share betweem
 // all componentry in the app
-import EncryptedStorage from 'react-native-encrypted-storage';
-import FlashMessage from 'react-native-flash-message';
-import { showMessage, hideMessage } from "react-native-flash-message";
 import * as Authentication from './authentication';
 import * as Alerts from './alerts';
-import Icon from 'react-native-vector-icons/Feather';
 
-export { Alerts, Icon }
+export { Alerts }
 
 export const isNative = () => {
-
 	if (typeof document != 'undefined') {
   		// I'm on the web!
   		return false;
@@ -23,8 +18,8 @@ export const isNative = () => {
   		// I'm in node js
   		return false;
 	}
-
 }
+
 
 export const dispatch = (dispatch, ownProps={}) => {
 
@@ -34,31 +29,6 @@ export const dispatch = (dispatch, ownProps={}) => {
 		dispatch
 	};
 
-}
-
-export function success(message, description=null){
-	return showMessage({
-		message: message,
-		description: description,
-		type: 'success'
-	});
-}
-
-export function danger(message, description=null){
-	return showMessage({
-		message: message,
-		description: description,
-		type: 'danger'
-	});
-}
-
-export async function save(key, value){
-	await EncryptedStorage.setItem(key, value);
-}
-
-export async function getValueFor(key) {
-	let result = await EncryptedStorage.getItem(key);
-	return result ? result : null;
 }
 
 const Headers = async ()=> {
