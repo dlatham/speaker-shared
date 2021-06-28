@@ -3,8 +3,8 @@
 import EncryptedStorage from 'react-native-encrypted-storage';
 import FlashMessage from 'react-native-flash-message';
 import { showMessage, hideMessage } from "react-native-flash-message";
-import * as Authentication from 'lib/authentication';
-import * as Alerts from 'lib/alerts';
+import * as Authentication from './authentication';
+import * as Alerts from './alerts';
 import Icon from 'react-native-vector-icons/Feather';
 
 export { Alerts, Icon }

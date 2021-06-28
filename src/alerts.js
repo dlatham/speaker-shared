@@ -1,8 +1,8 @@
 import React from'react';
-import { View, Text } from 'react-native';
-import FlashMessage from 'react-native-flash-message';
-import { showMessage, hideMessage } from "react-native-flash-message";
 import { connect, useSelector } from 'react-redux';
+import { isNative } from './global.js';
+const componentPath = isNative() ? './alerts/alerts_provider.native.js' : './alerts/alerts_provider.js';
+import AlertComponent from componentPath;
 
 
 export const success = ({message, description=null}) => {
@@ -24,35 +24,7 @@ export const danger = ({message, description=null}) => {
 }
 
 
-class AlertComponent extends React.Component {
 
-	// static options = {
-	// 	layout: {
-	// 		componentBackgroundColor: 'transparent',
-	// 	},
-	// 	overlay: {
-	// 		interceptTouchOutside: false,
-	// 	},
-	// };
-
-	componentDidUpdate(){
-		if(this.props.alert){
-			showMessage(this.props.alert);
-		}
-	}
-
-	alert(message){
-		return showMessage({message: message, type: 'success'});
-	}
-
-	render(){
-		return (
-			<View>
-				<FlashMessage position="top" icon="auto" hideStatusBar={true} />
-			</View>
-		);
-	}
-};
 
 
 const dispatch = (dispatch, ownProps = {}) => {
