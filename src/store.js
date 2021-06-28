@@ -58,9 +58,17 @@ export const rootReducer = combineReducers({
 	alerts
 });
 
-export const initStore = () => {
+// LocalStorage functions need to be passed to this thunk in order to make
+// sure this logic can work across both React DOM and React Native. The local storage
+// mechanism is different for each platform.
+
+// This should be dispatched as the Thunk middleware captures the request and runs it
+// async
+// e.g. store.dispatch(Store.initStore(LocalStorage))
+
+export const initStore = (localStorage) => {
 	return function(dispatch){
-		Authentication.GetCurrentUser().then(
+		Authentication.GetCurrentUser(localStorage).then(
 			user => dispatch({type: 'STORE_USER', ...user}),
 			err => console.error(err)
 		)

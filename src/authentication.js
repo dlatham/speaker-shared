@@ -77,20 +77,21 @@ AuthenticationContext.displayName = 'AuthenticationContext';
 
 
 
-// This gets the CurrentUser object from secure storage
+// This gets the CurrentUser object from the local storage passed to it
+// and continues loading the store
 
-export const GetCurrentUser = async () => {
+export const GetCurrentUser = async (localStorage) => {
 	try {
 		return {
-			uid: await Global.getValueFor('uid'),
-			accessToken: await Global.getValueFor('accessToken'),
-			client: await Global.getValueFor('client'),
-			expiry: await Global.getValueFor('expiry'),
-			username: await Global.getValueFor('username'),
-			password: await Global.getValueFor('password')
+			uid: await localStorage.get('uid'),
+			accessToken: await localStorage.get('accessToken'),
+			client: await localStorage.get('client'),
+			expiry: await localStorage.get('expiry'),
+			username: await localStorage.get('username'),
+			password: await localStorage.get('password')
 		}
 	} catch(err){
-		console.error("Error getting current user from secure storage in Authentication.GetCurrentUser()");
+		console.error("Error getting current user from provided local storage in Authentication.GetCurrentUser()");
 		console.error(err);
 		throw(err);
 	}
@@ -98,10 +99,10 @@ export const GetCurrentUser = async () => {
 
 // This sets the current user and geenrally is run when the user logs in using the SignIn component
 
-export const SetCurrentUser = async(user) => {
+export const SetCurrentUser = async(user, localStorage) => {
 	try {
 		for(const key in user){
-			await Global.save(key, user[key]);
+			await localStorage.set(key, user[key]);
 		}
 	} catch(err){
 		console.error("Error when saving user info securely in Authentication.SetCurrentUser()");
