@@ -1,8 +1,6 @@
 import React, { useState,useEffect,useContext } from 'react';
-import * as Global from 'lib/global';
-import * as Alerts from 'lib/alerts';
-import FlashMessage from 'react-native-flash-message';
-import { showMessage, hideMessage } from "react-native-flash-message";
+import * as Global from './global.js';
+import * as Alerts from './alerts.js';
 
 const DefaultUser = {
 	uid: null,

@@ -1,7 +1,7 @@
 import React from 'react';
 import { createStore, combineReducers } from 'redux';
 //import * as Global from 'lib/global';
-import * as Authentication from 'lib/authentication';
+import * as Authentication from './authentication';
 
 const currentUser = (state={}, action) => {
 	switch(action.type){
